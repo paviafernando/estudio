@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2540">
+<title>Estudio Mágico</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="css/estudio.css">
+</head>
+<body>
+<div id="deco" aria-hidden="true"></div>
+<button id="fsBtn" class="ib" title="Pantalla completa">⛶</button>
+
+<!-- INICIO -->
+<section id="start" class="screen">
+  <div class="corner l"><button class="ib hubBtn hidden" title="Todos los juegos">🏠</button></div>
+  <div class="corner r"><button class="ib" id="btnOpt0" title="Opciones">⚙️</button></div>
+  <div class="logo" id="logo">🎼</div>
+  <h1 id="title">Estudio Mágico</h1>
+  <p class="sub">Componé, grabá y tocá con 9 instrumentos</p>
+  <div class="whoBox">
+    <h2>¿Quién toca?</h2>
+    <div class="who" id="who"></div>
+    <div class="row"><button class="pill" id="editWho">✏️ Editar</button></div>
+  </div>
+  <div class="row"><button class="big" id="btnOpen">🎶 Abrir el estudio</button></div>
+  <div class="row"><button class="pill" id="btnTheme">👑 Modo princesa</button><button class="pill soon" id="btnGame">🎮 Modo juego <small>pronto</small></button></div>
+</section>
+
+<!-- ESTUDIO -->
+<section id="studio" class="hidden">
+  <header id="top">
+    <button class="ib" id="bMenu" title="Menú">☰</button>
+    <button id="songBtn" title="Velocidad, compás y largo"><span id="songName">Canción</span><span id="songInfo"></span></button>
+    <div id="transport">
+      <button class="ib" id="bStop" title="Volver al principio">⏮</button>
+      <button class="ib play" id="bPlay" title="Tocar / pausa">▶</button>
+      <button class="ib" id="bRec" title="Grabar"><span class="dot"></span></button>
+      <button class="ib" id="bLoop" title="Repetir">🔁</button>
+      <button class="ib" id="bMetro" title="Metrónomo">🥢</button>
+    </div>
+  </header>
+  <nav id="tracks"></nav>
+  <div id="edbar">
+    <div class="seg" id="viewTabs">
+      <button data-v="roll" title="Escalera: cada nota es un bloque, su largo es lo que dura">🪜 <span>Escalera</span></button>
+      <button data-v="staff" title="Pentagrama">🎼 <span>Pentagrama</span></button>
+    </div>
+    <div class="seg" id="durs" title="Duración de las notas nuevas">
+      <button data-len="16" title="Redonda (4 tiempos)"><svg viewBox="0 0 24 32"><ellipse cx="12" cy="22" rx="7" ry="4.6" transform="rotate(-20 12 22)" fill="none" stroke="currentColor" stroke-width="2.6"/></svg></button>
+      <button data-len="8" title="Blanca (2 tiempos)"><svg viewBox="0 0 24 32"><ellipse cx="9" cy="25" rx="6" ry="4.2" transform="rotate(-20 9 25)" fill="none" stroke="currentColor" stroke-width="2.4"/><line x1="14.4" y1="24" x2="14.4" y2="3" stroke="currentColor" stroke-width="2.2"/></svg></button>
+      <button data-len="4" title="Negra (1 tiempo)"><svg viewBox="0 0 24 32"><ellipse cx="9" cy="25" rx="6" ry="4.2" transform="rotate(-20 9 25)" fill="currentColor"/><line x1="14.4" y1="24" x2="14.4" y2="3" stroke="currentColor" stroke-width="2.2"/></svg></button>
+      <button data-len="2" title="Corchea (medio tiempo)"><svg viewBox="0 0 24 32"><ellipse cx="9" cy="25" rx="6" ry="4.2" transform="rotate(-20 9 25)" fill="currentColor"/><line x1="14.4" y1="24" x2="14.4" y2="3" stroke="currentColor" stroke-width="2.2"/><path d="M14.4 3 q7 5 5 13" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+      <button data-len="1" title="Semicorchea (un cuarto de tiempo)"><svg viewBox="0 0 24 32"><ellipse cx="9" cy="25" rx="6" ry="4.2" transform="rotate(-20 9 25)" fill="currentColor"/><line x1="14.4" y1="24" x2="14.4" y2="3" stroke="currentColor" stroke-width="2.2"/><path d="M14.4 3 q7 4 5 11 M14.4 8.5 q7 4 5 11" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+    </div>
+    <div class="seg tools">
+      <button id="bSharp" title="Sostenido: las notas que escribas en el pentagrama suben medio tono">♯</button>
+      <button id="bWrite" title="Escribir tocando: lo que toques se anota en la línea punteada">✍️ <span>Escribir</span></button>
+      <button id="bUndo" title="Deshacer">↶</button>
+      <button id="bRedo" title="Rehacer">↷</button>
+      <button class="zoomB" data-z="-" title="Alejar">🔍−</button>
+      <button class="zoomB" data-z="+" title="Acercar">🔍+</button>
+    </div>
+  </div>
+  <main id="editor">
+    <div id="rollHost" class="host"></div>
+    <div id="staffHost" class="host hidden"></div>
+  </main>
+  <section id="panel"></section>
+</section>
+
+<div id="ov" class="hidden"><div class="card" id="ovCard"></div></div>
+<div id="toast"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
